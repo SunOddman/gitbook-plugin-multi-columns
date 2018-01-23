@@ -49,6 +49,12 @@ module.exports = {
   },
 
   blocks: {
+    make_columns: {
+      blocks: ['left', 'right'],
+      process: function (block) {
+        return hehe(block);
+      }
+    },
     left_column: {
       process: function (block) {
         multiColumnName = block.kwargs['name'];
