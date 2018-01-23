@@ -1,5 +1,5 @@
 var markdown = require('gitbook-markdown');
-var COUNTER = 0;
+var $ = require('jquery');
 
 function hehe(block) {
   var body = markdown.page(block.body).content;
