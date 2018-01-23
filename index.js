@@ -1,5 +1,6 @@
 var markdown = require('gitbook-markdown');
 var $ = require('jquery');
+var cheerio = require('cheerio')
 
 function hehe(block) {
   var body = markdown.page(block.body).content;
@@ -37,15 +38,9 @@ function multiColumnContent(isleft, block, columnName) {
   var body = markdown.page(block.body).content;
   if (isleft) {
     htmlStr = '<div id="' + columnName + '" class="class-multi-columns"><div class="column-left">' + body + '</div></div>';
-              // `
-              //   <div id="${columnName}" class="class-multi-columns">
-              //       <div class="column-left">
-              //         ${body}
-              //       </div>
-              //   </div>
-              // `;
   } else {
-    var container = $('<div id=' + columnName + '></div>');
+    // var container = $('<div id=' + columnName + '></div>');
+    var container = cheerio.load('<div id=' + columnName + '></div>');
     // var container = $("#" + columnName);
     container.append('<div class="column-right">' + body + '</div >');
   }
