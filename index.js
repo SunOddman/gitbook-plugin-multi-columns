@@ -1,5 +1,4 @@
 var markdown = require('gitbook-markdown');
-var $ = require('jquery');
 var cheerio = require('cheerio')
 
 function hehe(block) {
