@@ -36,15 +36,18 @@ function multiColumnContent(isleft, block, columnName) {
   var htmlStr = '';
   var body = markdown.page(block.body).content;
   if (isleft) {
-    htmlStr = `
-                <div id="${columnName}" class="class-multi-columns">
-                    <div class="column-left">
-                      ${body}
-                    </div>
-                </div>
-              `;
+    htmlStr = '<div id="' + columnName + '" class="class-multi-columns"><div class="column-left">' + body + '</div></div>';
+              // `
+              //   <div id="${columnName}" class="class-multi-columns">
+              //       <div class="column-left">
+              //         ${body}
+              //       </div>
+              //   </div>
+              // `;
   } else {
-    var container = $("#" + columnName).append('<div class="column-right">' + body + '</div >');
+    var container = $('<div id=' + columnName + '></div>');
+    // var container = $("#" + columnName);
+    container.append('<div class="column-right">' + body + '</div >');
   }
   return htmlStr;
 }
