@@ -22,16 +22,6 @@ function hehe(block) {
   `;
 }
 
-function multiColumnContainer(isHeader) {
-  var htmlStr = '';
-  if (isHeader) {
-    htmlStr = '<div class="class-multi-columns"> '
-  } else {
-    htmlStr = '</div>'
-  }
-  return htmlStr;
-}
-
 function multiColumnContent(isleft, block, columnName) {
   var htmlStr = '';
   var body = markdown.page(block.body).content;
@@ -41,7 +31,7 @@ function multiColumnContent(isleft, block, columnName) {
     // var container = $('<div id=' + columnName + '></div>');
     var container = cheerio.load('<div id=' + columnName + '></div>');
     // var container = $("#" + columnName);
-    container.append('<div class="column-right">' + body + '</div >');
+    container.appendChild('<div class="column-right">' + body + '</div >');
   }
   return htmlStr;
 }
