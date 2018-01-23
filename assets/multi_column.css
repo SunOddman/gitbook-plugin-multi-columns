@@ -9,6 +9,7 @@
   padding-right: 10px;
   padding-bottom: 0;
   padding-left: 0;
+  width: 50%;
 }
 
 .column-right {
@@ -17,5 +18,5 @@
   padding-right: 0px;
   padding-bottom: 10;
   padding-left: 0;
-
+  width: 50%;
 }
