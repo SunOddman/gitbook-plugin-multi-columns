@@ -1,7 +1,7 @@
 {
   "name": "gitbook-plugin-multi-columns",
   "description": "gitbook multi columns",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "main": "index.js",
   "engines": {
@@ -31,6 +31,7 @@
         }
     },
   "dependencies": {
-    "gitbook-markdown": "^1.1.1"
+    "gitbook-markdown": "^1.1.1",
+    "cheerio": "0.22.0"
   }
 }
