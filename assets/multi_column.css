@@ -1,0 +1,11 @@
+.class-multi-columns {
+  display: flex;
+}
+
+.column-left {
+  flex: 1;
+}
+
+.column-right {
+  flex: 1;
+}

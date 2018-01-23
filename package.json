@@ -1,0 +1,36 @@
+{
+  "name": "gitbook-plugin-multi-columns",
+  "description": "gitbook multi columns",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "index.js",
+  "engines": {
+    "gitbook": ">=2.4.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "gitbook": {
+        "properties": {
+            "myConfigKey": {
+                "type": "string",
+                "default": "it's the default value",
+                "description": "It defines my awesome config!"
+            }
+        },
+        "blocks": {
+            "multi-column": {
+                "title": "Multi Column Layout",
+                "description": "Display blocks in muti-column. 用分栏的方式展示内容",
+                "properties": {
+                    "alignment": {
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    },
+  "dependencies": {
+    "gitbook-markdown": "^1.1.1"
+  }
+}
