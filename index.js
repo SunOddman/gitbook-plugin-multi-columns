@@ -44,11 +44,7 @@ function multiColumnContent(isleft, block, columnName) {
                 </div>
               `;
   } else {
-    var container = this.createElement(columnName);
-    var rightDiv = this.createElement('div');
-    rightDiv.class = 'column-right';
-    newNode.innerHTML = body;
-    container.appendChild(rightDiv);
+    var container = $("#" + columnName).append('<div class="column-right">' + body '</div >');
   }
   return htmlStr;
 }
