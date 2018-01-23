@@ -4,8 +4,16 @@
 
 .column-left {
   flex: 1;
+  padding-top: 0;
+  padding-right: 10px;
+  padding-bottom: 0;
+  padding-left: 0;
 }
 
 .column-right {
   flex: 1;
+  padding-top: 0;
+  padding-right: 0px;
+  padding-bottom: 10;
+  padding-left: 0;
 }
