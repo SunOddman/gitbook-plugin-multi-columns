@@ -25,23 +25,32 @@ function hehe(block) {
 function multiColumnContainer(isHeader) {
   var htmlStr = '';
   if (isHeader) {
-    htmlStr = '<div class="class-multi-columns">'
+    htmlStr = '<div class="class-multi-columns"> '
   } else {
     htmlStr = '</div>'
   }
   return htmlStr;
 }
 
-function multiColumnContent(isleft, block) {
+function multiColumnContent(isleft, block, columnName) {
+  var htmlStr = '';
   var body = markdown.page(block.body).content;
-  var className = isleft ? 'column-left' : 'column-right';
-
-  return `
-    <div class="${className}">
-    ${body}
-    </div>
-  `;
-
+  if (isleft) {
+    htmlStr = `
+                <div id="${columnName}" class="class-multi-columns">
+                    <div class="column-left">
+                      ${body}
+                    </div>
+                </div>
+              `;
+  } else {
+    var container = document.createElement(columnName);
+    var rightDiv = document.createElement('div');
+    rightDiv.class = 'column-right';
+    newNode.innerHTML = body;
+    container.appendChild(rightDiv);
+  }
+  return htmlStr;
 }
 
 module.exports = {
@@ -57,26 +66,16 @@ module.exports = {
   },
 
   blocks: {
-    start_multi_column: {
-      process: function(block) {
-        return multiColumnContainer(true);
-      }
-    },
     left_column: {
       process: function (block) {
-        return multiColumnContent(true, block);
+        multiColumnName = block.kwargs['name'];
+        return multiColumnContent(true, block, multiColumnName);
       }
     },
     right_column: {
       process: function (block) {
-        return multiColumnContent(false, block);
+        return multiColumnContent(false, block, multiColumnName);
       }
-    },
-    end_multi_column: {
-      process: function (block) {
-        return multiColumnContainer(false);
-      }
-
     }
   }
 
