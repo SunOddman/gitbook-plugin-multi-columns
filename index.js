@@ -20,8 +20,10 @@ function layoutColumns(block) {
   var containerCount = arrLeft.length > arrRight.length ? arrLeft.length : arrRight.length;
   var strReturn = '' + body + '';
   for (let index = 0; index < containerCount; index++) {
-    const left = markdown.page(arrLeft[index].body).content;
-    const right = markdown.page(arrRight[index].body).content;
+    var leftBlock = arrLeft[index];
+    var rightBlock = arrRight[index];
+    var left = leftBlock ? markdown.page(leftBlock.body).content : '';
+    var right = rightBlock ? markdown.page(arrRight[index].body).content : '';
 
     var containerStr = `
             <div class="class-multi-columns">
