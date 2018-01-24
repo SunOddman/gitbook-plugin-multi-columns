@@ -1,6 +1,41 @@
 var markdown = require('gitbook-markdown');
 var cheerio = require('cheerio')
 
+function layoutColumns(block) {
+
+  var body = markdown.page(block.body).content;
+
+  var arrLeft = [];
+  var arrRight = [];
+
+  for (const _blk in block.blocks) {
+    if (_blk.name == 'left') {
+      arrLeft.push(_blk);
+    } else if (_blk.name == 'right') {
+      arrRight.push(_blk);
+    }
+  }
+
+  var containerCount = arrLeft.length > arrRight.length ? arrLeft.length : arrRight.length;
+  var strReturn = '' + body + '';
+  for (let index = 0; index < containerCount; index++) {
+    const left = arrLeft[index];
+    const right = arrRight[index];
+    var containerStr = `
+            <div class="class-multi-columns">
+              <div class="column-left">
+              ${leftBody}
+              </div>
+              <div class="column-right">
+              ${rightBody}
+              </div>
+            </div>
+          `
+    strReturn += containerStr;
+  }
+  return strReturn;
+}
+
 function hehe(block) {
   var body = markdown.page(block.body).content;
   // var blocks = block.blocks.filter(function (subBlock) {
