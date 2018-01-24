@@ -8,7 +8,8 @@ function layoutColumns(block) {
   var arrLeft = [];
   var arrRight = [];
 
-  for (const _blk in block.blocks) {
+  for (idx in block.blocks) {
+    var _blk = block.blocks[idx];
     if (_blk.name == 'left') {
       arrLeft.push(_blk);
     } else if (_blk.name == 'right') {
@@ -19,15 +20,16 @@ function layoutColumns(block) {
   var containerCount = arrLeft.length > arrRight.length ? arrLeft.length : arrRight.length;
   var strReturn = '' + body + '';
   for (let index = 0; index < containerCount; index++) {
-    const left = arrLeft[index];
-    const right = arrRight[index];
+    const left = markdown.page(arrLeft[index].body).content;
+    const right = markdown.page(arrRight[index].body).content;
+
     var containerStr = `
             <div class="class-multi-columns">
               <div class="column-left">
-              ${leftBody}
+              ${left}
               </div>
               <div class="column-right">
-              ${rightBody}
+              ${right}
               </div>
             </div>
           `
@@ -87,7 +89,8 @@ module.exports = {
     make_columns: {
       blocks: ['left', 'right'],
       process: function (block) {
-        return hehe(block);
+        return layoutColumns(block);
+
       }
     },
     left_column: {
